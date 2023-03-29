@@ -2,7 +2,7 @@ You must download both the NYT Best Seller Dataset and the Seattle Public Librar
 
 Your file structure should be:
 
-.
+Base Folder
 ├── GoodReads
 │   ├── about.txt
 │   └── books.csv
@@ -31,3 +31,20 @@ Your file structure should be:
 └── dylancastillo
     ├── about.txt
     └── books.csv
+
+
+
+INTERESTING ARTICLES AND LINKS:
+Race by Name:
+    https://hdsr.mitpress.mit.edu/pub/wgss79vu/release/2
+
+    We can replicate this paper:
+        http://cs230.stanford.edu/projects_spring_2021/reports/78.pdf
+        "The results show that having data on personal last names is already
+        enough to get fairly accurate predictions for Asians, Hispanics and Non-Hispanic Whites. However, data on first names
+        and locations is crucial for achieving acceptable results for Non-Hispanic Blacks."
+
+    https://www.youtube.com/watch?v=CKrNvlMqroc
+
+    A Pre-trained API we could attempt to use:
+        https://github.com/appeler/ethnicolr
