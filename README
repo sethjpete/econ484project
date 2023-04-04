@@ -6,6 +6,8 @@ Base Folder
 ├── GoodReads
 │   ├── about.txt
 │   └── books.csv
+├── Exported
+│   ├── [Exported files go here]
 ├── NYTBest
 │   ├── about.txt
 │   └── bestsellers.csv
