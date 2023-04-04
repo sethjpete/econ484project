@@ -1,2 +1,3 @@
 *.csv
 !books.csv
+!book_set_v1.csv
