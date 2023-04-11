@@ -1,18 +1,43 @@
 You must download both the NYT Best Seller Dataset and the Seattle Public Library Datasets from Kaggle. The links are given in their respective folders.
 
+You must generate the training set manually using Imported/import_data.ipynb. This notebook will generate a training_set.csv file in the base folder.
+
+DESCRIPTIONS OF PYTHON NOTEBOOKS:
+data_gen:
+    This notebook generates the data which was trained manually by hand using the GoodReads, NYTBest, and SPL datasets. 
+    The NYT Bestseller data was used to map titles to a concatened dataset of the GoodReads and SPL datasets.
+gdr_datagen:
+    This notebook cleans and exports the GoodReads dataset.
+nyt_datagen:
+    This notebook cleans and exports the NYTBest dataset.
+    More interestingly, this dataset also scrapes the internet by ISPN for the author, title, and publisher data of books from the NYTBest dataset.
+spl_datagen:
+    This notebook merges every year of the SPL dataset into one file, and then cleans and exports the data. We take the top 10000 most checked out books (per year) from the SPL dataset.
+
+
+DESCRIPTIONS OF FOLDERS:
 Your file structure should be:
 
 Base Folder
+├── Exported
+│   ├── [Exported files go here]
 ├── GoodReads
 │   ├── about.txt
 │   └── books.csv
-├── Exported
-│   ├── [Exported files go here]
+├── Imported
+│   ├── import_data.ipynb
+│   ├── Isaac.xlsx
+│   ├── McCord.xlsx
+│   ├── Pohai.xlsx
 ├── NYTBest
 │   ├── about.txt
 │   └── bestsellers.csv
+├── data_gen.ipynb
+├── gdr_datagen.ipynb
 ├── Project PSET 6.ipynb
 ├── README
+├── spl_datagen.ipynb
+├── training_set.csv
 ├── SPL
 │   ├── Checkouts_By_Title_Data_Lens_2005.csv
 │   ├── Checkouts_By_Title_Data_Lens_2006.csv
@@ -33,20 +58,3 @@ Base Folder
 └── dylancastillo
     ├── about.txt
     └── books.csv
-
-
-
-INTERESTING ARTICLES AND LINKS:
-Race by Name:
-    https://hdsr.mitpress.mit.edu/pub/wgss79vu/release/2
-
-    We can replicate this paper:
-        http://cs230.stanford.edu/projects_spring_2021/reports/78.pdf
-        "The results show that having data on personal last names is already
-        enough to get fairly accurate predictions for Asians, Hispanics and Non-Hispanic Whites. However, data on first names
-        and locations is crucial for achieving acceptable results for Non-Hispanic Blacks."
-
-    https://www.youtube.com/watch?v=CKrNvlMqroc
-
-    A Pre-trained API we could attempt to use:
-        https://github.com/appeler/ethnicolr
