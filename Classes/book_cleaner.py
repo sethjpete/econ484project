@@ -6,6 +6,9 @@ class BookCleaner:
         self.df = df
         self.df_clean = self._clean(self.df)
 
+    def get_clean_df(self):
+        return self.df_clean
+
     # Clean all author data
     def clean_author(self, author : str):
         author = str(author)
