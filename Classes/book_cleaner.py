@@ -72,3 +72,5 @@ class BookCleaner:
         df_clean['removed_common_publisher_a'] = df_clean.removed_common_publisher_a.apply(strip_spaces)
         df_clean['removed_common_publisher_b'] = df_clean.removed_common_publisher_b.apply(strip_spaces)
 
+        return df_clean
+
