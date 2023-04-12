@@ -8,45 +8,44 @@ class BookCleaner:
 
     def get_clean_df(self):
         return self.df_clean
-
-    # Clean all author data
-    def clean_author(self, author : str):
-        author = str(author)
-        author = author.lower().strip()
-        if ',' in author:
-            author = author.split(',')[1].strip()+author.split(',')[0].strip()
-        elif ' ' in author:
-            author = author.split(' ')[0].strip()+author.split(' ')[1].strip()
-        return re.sub(r'[^a-zA-Z0-9]', '', author)
-
-    # Just lowercase and strip
-    def clean_title_publisher(self, title : str):
-        title = str(title)
-        title = title.lower().strip()
-        return re.sub(r'[^a-zA-Z0-9 ]', '', title)
-
-    # Remove words that may be problematic
-    def remove_title_words(self, title : str):
-        title = title.lower()
-        remove_list = ['a ', 'an ', 'the ', 'and ', 'nor ', 'but ', 'so ', 'or ', 'yet ', 'this ', 'that ', 'these ', \
-                    'those ', 'by ', 'is ', 'be ', 'are ', 'am ', 'was ', 'were ', 'have ', 'has ', 'had ', \
-                    'his ', 'her ', 'he ', 'she ', 'of ']
-        for item in remove_list:
-            title = title.replace(item, '')
-        return title
-
-    def remove_book_specific_words(self, title : str):
-        title = title.lower()
-        remove_list = [' novel', ' movie', ' book', ' memoir', ' edition',  ' publisher', ' books', ' member'\
-                    'novel ', 'movie ', 'book ', 'memoir ', 'edition ',  'publisher ', 'books ', 'member '] 
-        for item in remove_list:
-            title = title.replace(item, '')
-        return title
-
-    def strip_spaces(self, text : str):
-        return re.sub(r'[\ ]', '', text)
     
     def _clean(self, df) -> pd.DataFrame:
+        # Clean all author data
+        def clean_author(author : str):
+            author = str(author)
+            author = author.lower().strip()
+            if ',' in author:
+                author = author.split(',')[1].strip()+author.split(',')[0].strip()
+            elif ' ' in author:
+                author = author.split(' ')[0].strip()+author.split(' ')[1].strip()
+            return re.sub(r'[^a-zA-Z0-9]', '', author)
+
+        # Just lowercase and strip
+        def clean_title_publisher(title : str):
+            title = str(title)
+            title = title.lower().strip()
+            return re.sub(r'[^a-zA-Z0-9 ]', '', title)
+
+        # Remove words that may be problematic
+        def remove_title_words(title : str):
+            title = title.lower()
+            remove_list = ['a ', 'an ', 'the ', 'and ', 'nor ', 'but ', 'so ', 'or ', 'yet ', 'this ', 'that ', 'these ', \
+                        'those ', 'by ', 'is ', 'be ', 'are ', 'am ', 'was ', 'were ', 'have ', 'has ', 'had ', \
+                        'his ', 'her ', 'he ', 'she ', 'of ']
+            for item in remove_list:
+                title = title.replace(item, '')
+            return title
+
+        def remove_book_specific_words(title : str):
+            title = title.lower()
+            remove_list = [' novel', ' movie', ' book', ' memoir', ' edition',  ' publisher', ' books', ' member'\
+                        'novel ', 'movie ', 'book ', 'memoir ', 'edition ',  'publisher ', 'books ', 'member '] 
+            for item in remove_list:
+                title = title.replace(item, '')
+            return title
+
+        def strip_spaces(text : str):
+            return re.sub(r'[\ ]', '', text)
         df_clean = df.copy()
 
         df_clean['cleaned_author_a'] = df.author_a.apply(clean_author)
