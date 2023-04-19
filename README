@@ -1,60 +1,32 @@
-You must download both the NYT Best Seller Dataset and the Seattle Public Library Datasets from Kaggle. The links are given in their respective folders.
+All deliverables are in the Training folder.
 
-You must generate the training set manually using Imported/import_data.ipynb. This notebook will generate a training_set.csv file in the base folder.
+The following deliverables are included in the Training folder:
 
-DESCRIPTIONS OF PYTHON NOTEBOOKS:
-data_gen:
-    This notebook generates the data which was trained manually by hand using the GoodReads, NYTBest, and SPL datasets. 
-    The NYT Bestseller data was used to map titles to a concatened dataset of the GoodReads and SPL datasets.
-gdr_datagen:
-    This notebook cleans and exports the GoodReads dataset.
-nyt_datagen:
-    This notebook cleans and exports the NYTBest dataset.
-    More interestingly, this dataset also scrapes the internet by ISPN for the author, title, and publisher data of books from the NYTBest dataset.
-spl_datagen:
-    This notebook merges every year of the SPL dataset into one file, and then cleans and exports the data. We take the top 10000 most checked out books (per year) from the SPL dataset.
+Model_Creator.ipynb
+-- This is the Jupyter Notebook that was used to create the model.
+-- THIS IS THE MAIN DELIVERABLE FOR THE ASSIGNMENT.
+
+** Model_Creator imports clean_data.book_cleaner.py
+book_cleaner.py
+-- This class is used to clean the data for the model.
+-- Particularly, it strips common words, spaces, and other symbols from the data.
+
+** Model_Creator uses the following datasets:
+-- training_set.csv (found in the Training folder)
+---- This is the dataset that was used to train the model. This dataset is comprised of hand-classified books, matching NYT to GoodReads/ SPL.
+---- This dataset is generated from Imported/import_data.ipynb
+------ Imported/import_data.ipynb imports the data from its own folder and the Exported/HW/ folder.
+-- exported_models/goodreads.csv
+---- This is the same dataset found in GoodReads/books.csv, but it is moved for convenience.
+-- exported_models/Small_SPL
+---- This is the same dataset used in the hand-classified "master" dataset. It is moved for convenience.
 
 
-DESCRIPTIONS OF FOLDERS:
-Your file structure should be:
 
-Base Folder
-├── Exported
-│   ├── [Exported files go here]
-├── GoodReads
-│   ├── about.txt
-│   └── books.csv
-├── Imported
-│   ├── import_data.ipynb
-│   ├── Isaac.xlsx
-│   ├── McCord.xlsx
-│   ├── Pohai.xlsx
-├── NYTBest
-│   ├── about.txt
-│   └── bestsellers.csv
-├── data_gen.ipynb
-├── gdr_datagen.ipynb
-├── Project PSET 6.ipynb
-├── README
-├── spl_datagen.ipynb
-├── training_set.csv
-├── SPL
-│   ├── Checkouts_By_Title_Data_Lens_2005.csv
-│   ├── Checkouts_By_Title_Data_Lens_2006.csv
-│   ├── Checkouts_By_Title_Data_Lens_2007.csv
-│   ├── Checkouts_By_Title_Data_Lens_2008.csv
-│   ├── Checkouts_By_Title_Data_Lens_2009.csv
-│   ├── Checkouts_By_Title_Data_Lens_2010.csv
-│   ├── Checkouts_By_Title_Data_Lens_2011.csv
-│   ├── Checkouts_By_Title_Data_Lens_2012.csv
-│   ├── Checkouts_By_Title_Data_Lens_2013.csv
-│   ├── Checkouts_By_Title_Data_Lens_2014.csv
-│   ├── Checkouts_By_Title_Data_Lens_2015.csv
-│   ├── Checkouts_By_Title_Data_Lens_2016.csv
-│   ├── Checkouts_By_Title_Data_Lens_2017.csv
-│   ├── Integrated_Library_System__ILS__Data_Dictionary.csv
-│   ├── Library_Collection_Inventory.csv
-│   └── about.txt
-└── dylancastillo
-    ├── about.txt
-    └── books.csv
+Book_Comparer.py
+-- This is the extra program that compares the books and outputs the results.
+-- This program is not required for the assignment, but it is a fun extra program.
+
+** Book_Comparer imports clean_data.book_cleaner.py
+** Book_Comparer uses pre-generated models found in exported_models
+** exported_models models are generated in Model_Creator.ipynb
