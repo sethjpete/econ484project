@@ -62,15 +62,17 @@ class BookCleaner:
         df_clean['removed_common_title_b'] = df_clean.cleaned_title_b.apply(remove_title_words)
         df_clean['removed_all_title_a'] = df_clean.removed_common_title_a.apply(remove_book_specific_words).apply(strip_spaces)
         df_clean['removed_all_title_b'] = df_clean.removed_common_title_b.apply(remove_book_specific_words).apply(strip_spaces)
-        df_clean['removed_common_title_a'] = df_clean.removed_common_title_a.apply(strip_spaces)
-        df_clean['removed_common_title_b'] = df_clean.removed_common_title_b.apply(strip_spaces)
+        # df_clean['removed_common_title_a'] = df_clean.removed_common_title_a.apply(strip_spaces)
+        # df_clean['removed_common_title_b'] = df_clean.removed_common_title_b.apply(strip_spaces)
 
         df_clean['removed_common_publisher_a'] = df_clean.cleaned_publisher_a.apply(remove_title_words)
         df_clean['removed_common_publisher_b'] = df_clean.cleaned_publisher_b.apply(remove_title_words)
         df_clean['removed_all_publisher_a'] = df_clean.removed_common_publisher_a.apply(remove_book_specific_words).apply(strip_spaces)
         df_clean['removed_all_publisher_b'] = df_clean.removed_common_publisher_b.apply(remove_book_specific_words).apply(strip_spaces)
-        df_clean['removed_common_publisher_a'] = df_clean.removed_common_publisher_a.apply(strip_spaces)
-        df_clean['removed_common_publisher_b'] = df_clean.removed_common_publisher_b.apply(strip_spaces)
+        # df_clean['removed_common_publisher_a'] = df_clean.removed_common_publisher_a.apply(strip_spaces)
+        # df_clean['removed_common_publisher_b'] = df_clean.removed_common_publisher_b.apply(strip_spaces)
+
+        df_clean.drop(['removed_common_publisher_a', 'removed_common_publisher_b', 'removed_common_title_a', 'removed_common_title_b'], axis = 1, inplace = True)
 
         return df_clean
 
