@@ -1,20 +1,20 @@
-# Defining the problem:
-All “book-like” publications receive an ISBN- an International Standard Book Number- that uniquely identifies a specific publication medium of a single intellectual property
-Specifically, separate ISBNs are assigned to each separate edition of a book– meaning for Harry Potter and the Goblet of Fire, there are over 30 different ISBNs 
-for the same work, one for the original hardcover edition, one for a paperback, one for each separate language it is translated into, one for the audiobook, 
-and one for each different publisher that has historically published and sold the book.
-Initially, we wanted to look at the causal effect of race on a book’s best-seller status. 
-However, we quickly ran into the issue of competing ISBNs– those reported by New York Times were different than those reported by Good Reads, 
-which were also different from the ones that the Seattle Public Library reports
-Other entities have sought to remedy this issue– for instance, GoodReads has a unique ‘GoodReads identifier.’ 
-In general, we have found book data to be highly commercialized; for instance, Bookstat sells data on book sales data, 
-using a proprietary measure of identification. But Bookstat only sells their data commercially to firms with ‘annual revenues [of] $10 million or more’. 
-Seriously– look at it yourself. https://bookstat.com/
-Other ISBN data services are priced more fairly, but are still unfriendly to academic research; isbndb.com offers an academic price to access their API, 
-but restricts daily calls to just 2,000, which is no good for big data projects.
-Our solution: create a Machine Learning book-matching algorithm, capable of bypassing ISBNs entirely, using a minimum of two of four identifying characteristics: 
-Author, Title, Publisher, and Publication Year.
-We utilized the book-matching algorithm to build a crosswalk between SPL dataset and the GoodReads dataset, thus generating new data (new ID system)
+**Defining the problem:**
+> All “book-like” publications receive an ISBN- an International Standard Book Number- that uniquely identifies a specific publication medium of a single intellectual property
+> Specifically, separate ISBNs are assigned to each separate edition of a book– meaning for Harry Potter and the Goblet of Fire, there are over 30 different ISBNs 
+> for the same work, one for the original hardcover edition, one for a paperback, one for each separate language it is translated into, one for the audiobook, 
+> and one for each different publisher that has historically published and sold the book.
+> Initially, we wanted to look at the causal effect of race on a book’s best-seller status. 
+> However, we quickly ran into the issue of competing ISBNs– those reported by New York Times were different than those reported by Good Reads, 
+> which were also different from the ones that the Seattle Public Library reports
+> Other entities have sought to remedy this issue– for instance, GoodReads has a unique ‘GoodReads identifier.’ 
+> In general, we have found book data to be highly commercialized; for instance, Bookstat sells data on book sales data, 
+> using a proprietary measure of identification. But Bookstat only sells their data commercially to firms with ‘annual revenues [of] $10 million or more’. 
+> Seriously– look at it yourself. https://bookstat.com/
+> Other ISBN data services are priced more fairly, but are still unfriendly to academic research; isbndb.com offers an academic price to access their API, 
+> but restricts daily calls to just 2,000, which is no good for big data projects.
+> Our solution: create a Machine Learning book-matching algorithm, capable of bypassing ISBNs entirely, using a minimum of two of four identifying characteristics: 
+> Author, Title, Publisher, and Publication Year.
+> We utilized the book-matching algorithm to build a crosswalk between SPL dataset and the GoodReads dataset, thus generating new data (new ID system)
 
 
 
