@@ -66,11 +66,11 @@ class BookComparer:
         self.title_publisher_trained_network = pickle.load(open(path_to_trained_models+'title_publisher_trained_network.pkl', 'rb'))
         self.author_publisher_trained_network = pickle.load(open(path_to_trained_models+'author_publisher_trained_network.pkl', 'rb'))
 
-        self.full_data_scalar = load(open(path_to_trained_models+'full_data_scalar.pkl', 'rb'))
-        self.title_only_scalar = load(open(path_to_trained_models+'title_only_scalar.pkl', 'rb'))
-        self.title_author_scalar = load(open(path_to_trained_models+'title_author_scalar.pkl', 'rb'))
-        self.title_publisher_scalar = load(open(path_to_trained_models+'title_publisher_scalar.pkl', 'rb'))
-        self.author_publisher_scalar = load(open(path_to_trained_models+'author_publisher_scalar.pkl', 'rb'))
+        self.full_data_scalar = load(open(path_to_trained_models+'full_data_scaler.pkl', 'rb'))
+        self.title_only_scalar = load(open(path_to_trained_models+'title_only_scaler.pkl', 'rb'))
+        self.title_author_scalar = load(open(path_to_trained_models+'title_author_scaler.pkl', 'rb'))
+        self.title_publisher_scalar = load(open(path_to_trained_models+'title_publisher_scaler.pkl', 'rb'))
+        self.author_publisher_scalar = load(open(path_to_trained_models+'author_publisher_scaler.pkl', 'rb'))
     
     def _build_comparison_set(self, path_to_comparison_set) -> pd.DataFrame:
         df = pd.read_csv(path_to_comparison_set)
@@ -148,8 +148,8 @@ class BookComparer:
     def _generate_numeric_features(self, df : pd.DataFrame) -> pd.DataFrame:
         numeric_df = pd.DataFrame()
 
-        colHeaders = ['cleaned_author_', 'cleaned_title_', 'cleaned_publisher_', 'removed_common_title_', \
-                    'removed_all_title_', 'removed_common_publisher_', 'removed_all_publisher_']
+        colHeaders = ['cleaned_author_', 'cleaned_title_', 'cleaned_publisher_', \
+                    'removed_all_title_', 'removed_all_publisher_']
 
         numeric_df['publish_year_delta'] = abs(df['publish_year_b'] - df['publish_year_a'])
 
@@ -162,8 +162,6 @@ class BookComparer:
             numeric_df[col+'damerau'] = df.apply(lambda row : jf.damerau_levenshtein_distance(row[col_a], row[col_b]), axis = 1)
             numeric_df[col+'hamming'] = df.apply(lambda row : jf.hamming_distance(row[col_a], row[col_b]), axis = 1)
             numeric_df[col+'jaro'] = df.apply(lambda row : jf.jaro_similarity(row[col_a], row[col_b]), axis = 1)
-            numeric_df[col+'jaro_winkler'] = df.apply(lambda row : jf.jaro_winkler_similarity(row[col_a], row[col_b]), axis = 1)
-            numeric_df[col+'lcs_seq_len'] = df.apply(lambda row : pylcs.lcs_sequence_length(row[col_a], row[col_b]), axis = 1)
             numeric_df[col+'edit_dist'] = df.apply(lambda row : pylcs.edit_distance(row[col_a], row[col_b]), axis = 1)
         print('Done.                                      ', end='\r')
         return numeric_df
